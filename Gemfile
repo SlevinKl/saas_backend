@@ -2,46 +2,60 @@ source "https://rubygems.org"
 
 ruby "3.2.3"
 
-# Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
-gem "rails", "~> 7.1.3", ">= 7.1.3.2"
+# RAILS
+gem "rails", "~> 7.1"
 
-# Use postgresql as the database for Active Record
-gem "pg", "~> 1.1"
+# PG
+gem "pg"
+gem "pg_search"
 
-# Use the Puma web server [https://github.com/puma/puma]
-gem "puma", ">= 5.0"
+# DEVOPS
+gem "puma", "~> 6.4"
 
-# Build JSON APIs with ease [https://github.com/rails/jbuilder]
-# gem "jbuilder"
+# CACHE
+gem "bootsnap", require: false
 
-# Use Redis adapter to run Action Cable in production
-# gem "redis", ">= 4.0.1"
+# SESSION CACHE
+gem "redis"
 
-# Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
-# gem "kredis"
-
-# Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
-# gem "bcrypt", "~> 3.1.7"
+# JOBS
+gem "sidekiq", "~> 7.2"
+gem "sidekiq-cron", "~> 1.12"
+gem "sidekiq-failures"
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem "tzinfo-data", platforms: %i[ windows jruby ]
 
-# Reduces boot times through caching; required in config/boot.rb
-gem "bootsnap", require: false
+# API
+gem "grape", "~> 2.0"
+gem "grape-entity"
+gem "grape-swagger"
+gem "grape-swagger-entity"
+gem "grape-swagger-rails"
 
-# Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
-# gem "image_processing", "~> 1.2"
+# DEV
+gem "enumerize"
 
-# Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin Ajax possible
-# gem "rack-cors"
+# AUTH
+gem "devise", ">= 4.7.1"
+gem "pundit"
+
+# OAUTH
+gem "doorkeeper", "~> 5.6" # Security https://nvd.nist.gov/vuln/detail/CVE-2018-1000211 https://nvd.nist.gov/vuln/detail/CVE-2018-1000088
+gem "doorkeeper-jwt"
 
 group :development, :test do
-  # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri windows ]
+  gem "pry-byebug"
+  gem "awesome_print"
 end
 
 group :development do
-  # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
-  # gem "spring"
+  gem "foreman"
+end
+
+group :test do
+  gem "rspec-rails"
+  gem "factory_bot_rails"
 end
 
