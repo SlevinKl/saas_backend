@@ -4,6 +4,7 @@ ruby "3.2.3"
 
 # RAILS
 gem "rails", "~> 7.1"
+gem "dotenv-rails", require: "dotenv/load"
 
 # PG
 gem "pg"
@@ -51,6 +52,7 @@ group :development, :test do
 end
 
 group :development do
+  gem "annotate"
   gem "foreman"
 end
 
